@@ -17,9 +17,15 @@ def transf_ladder_score(df):
 """
 Funcion para insertar la moda de ese país en el campo regional indicator cuando su valor es nulo
 """
-def transf_regional_indicator(df, country):
-    for countries in country["Country"]:
-        moda = df[df["Country"] == countries]["Regional indicator"].mode()[0]
-        df.loc[(df["Country"] == countries) & (df["Regional indicator"].isnull()), "Regional indicator"] = moda
+def transf_regional_indicator(df, countries_df):
+    for country in countries_df["Country"]:
+        subset = df[df["Country"] == country]
         
+        if subset["Regional indicator"].isnull().any():
+            moda = subset["Regional indicator"].mode()
+            if not moda.empty:
+                df.loc[(df["Country"] == country) & (df["Regional indicator"].isnull()), "Regional indicator"] = moda[0]
+            else:
+                df.loc[df["Country"] == country, "Regional indicator"] = "NONE"
+                
     return df

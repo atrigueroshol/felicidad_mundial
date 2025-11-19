@@ -30,7 +30,8 @@ if "Ladder score" in df_all.columns:
 #Comprobamos si hay valores nulos en Regional indicator y si hay nulos aplicamos la moda
 query = "SELECT DISTINCT country FROM df_all WHERE `Regional indicator` IS NULL"
 resultado = ps.sqldf(query, locals())
+
 if not resultado.empty:
     df_all = transform.transf_regional_indicator(df_all, resultado)
 
-
+#----------- CREACION DE FICHERO CSV ----------------------
