@@ -32,10 +32,6 @@ El fichero resultante como **output** de todo el proceso de limpieza y transform
 	 - **load.py**: Script de python que contiene las funciones de carga de los datos.
 	 - **transform.py**: Script de python que contiene las funciones de transformación de los datos.
 	 - **main.py**: Progama principal que se encarga de ejecutar la extracción, limpieza, transformación y carga de los datos.
-
-
-
-
-
+ - **requirements.txt**: Fichero que contiene las librerías necesarías para la ejecución del proyecto.
 
 
